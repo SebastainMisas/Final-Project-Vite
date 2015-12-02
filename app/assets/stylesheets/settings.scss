@@ -1,0 +1,38 @@
+// Place all the styles related to the settings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+	background-color: black;
+  font-family: "Helvetica Neue";
+}
+.row.one.settings {
+	background-color: #1b1b1b;
+	color: white;
+}
+.row.two.settings {
+	background-color: black;
+	color: white;
+	text-align: center;
+}
+.row.three.settings {
+	background-color: #1b1b1b;
+	color: white;
+}
+.top-middle {
+	text-align: center;
+}
+.top-right {
+	text-align: right;
+}
+.btn-settings{
+	width: 150px;
+  	height: 60px;
+  	background-color: grey;
+  	color: white;
+}
+
+.glyphicon-home {
+	font-size: 40px;
+	margin-top: 2vh;
+  	right: 4vw;
+}

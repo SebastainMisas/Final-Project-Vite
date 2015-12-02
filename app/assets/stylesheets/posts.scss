@@ -1,0 +1,436 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#post_avatar {
+  margin-left: auto;
+  margin-right: auto;
+}
+.dropdown-toggle {
+  border-radius: 20px;
+}
+.profile_pic {
+  border-radius: 50px;
+}
+.body_main {
+	background-color: black;
+  font-family: "Helvetica Neue";
+}
+.row.one {
+	background-color: #1b1b1b;
+	color: white;
+}
+.row.two {
+	background-color: black;
+	color: white;
+}
+.row.three {
+	background-color: #1b1b1b;
+	color: white;
+}
+
+.btn-circle {
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+}
+
+.btn-circle.red {
+	background-color: red;
+	border-radius: 60px;
+  float: right;
+	
+}
+.btn-circle.green {
+	background-color: green;
+	border-radius: 60px;
+}
+.top-middle {
+	text-align: center;
+}
+.top-right {
+	text-align: right;
+}
+
+.btn-circle.red:hover {
+	background-color: #FF3333;
+}
+
+.btn-circle.green:hover {
+	background-color: #99CC33
+}
+.glyphicon {
+	width: 40px;
+}
+.btn-circle{
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.btn-circle:before {
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  content: '';
+  top: 100%;
+  left: 5%;
+  height: 10px;
+  width: 90%;
+  opacity: 0;
+  background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+  /* W3C */
+  -webkit-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+  -webkit-transition-property: transform, opacity;
+  transition-property: transform, opacity;
+}
+.btn-circle:hover, .hvr-float-shadow:focus, .hvr-float-shadow:active {
+  -webkit-transform: translateY(-15px);
+  transform: translateY(-15px);
+  /* move the element up by 5px */
+}
+.btn-circle:hover:before, .btn-circle:focus:before, .btn-circle:active:before {
+  opacity: 1;
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+  /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
+}
+.glyphicon-remove{
+	font-size: 40px;
+}
+.glyphicon-ok{
+	font-size: 40px;
+}
+
+.btn-settings{
+	width: 150px;
+  	height: 60px;
+  	background-color: #1b1b1b;
+  	color: white;
+}
+.btn-vites {
+	width: 150px;
+  	height: 60px;
+  	background-color: #1b1b1b;
+  	color: white;
+  	
+}
+.post-link {
+  font-size: 60px;
+  margin-right: 13vh;
+  float: right;
+  
+}
+
+.glyphicon-envelope {
+	font-size: 40px;
+  margin-top: 2vh;
+  right: 4vw;
+}
+.glyphicon-user {
+  font-size: 40px;
+}
+.glyphicon-pencil {
+  border-width: 2px;
+  border-color: white;
+}
+
+.hero-unit {
+  background-color: #1b1b1b;
+  height: 80vh;
+}
+.hero-unit.form{
+    background-color: black;
+    padding-top: 10vh;
+}
+.img-responsives {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  width: auto;
+  height: 100%;
+  display: block;
+  border-radius: 15%;
+}
+.post{
+  position: relative;
+  width: 100%;
+  height: 95%;
+  display: none;
+}
+.post.active{
+  display: block;
+}
+
+.post-details-container {
+  font-weight: bold;
+  position: relative;
+  right: -5vw;
+  margin-top: -18vh;
+  color: black;
+  width: 40%;
+  background-color:rgba(88,88,88,0.8);
+  border-radius: 50px;
+  border-color: rgba(255,255,255,0.4);
+  border-style: solid;
+  border-width: 2px;
+  font-size: 2vw;
+  font-size: 2.2vh;
+  font-family: "Helvetica Neue";
+}
+.details {
+  margin-left: 2vw;
+}
+.read-more-state {
+  display: none;
+}
+
+.read-more-target {
+  opacity: 0;
+  max-height: 0;
+  font-size: 0;
+  transition: .25s ease;
+}
+
+.read-more-state:checked ~ .read-more-wrap .read-more-target {
+  opacity: 1;
+  font-size: inherit;
+  max-height: 100%;
+}
+
+.read-more-state ~ .read-more-trigger:before {
+  content: 'Show more';
+}
+
+.read-more-state:checked ~ .read-more-trigger:before {
+  content: 'Show less';
+}
+
+.read-more-trigger {
+  cursor: pointer;
+  display: inline-block;
+  color: blue;
+  font-size: .9em;
+  line-height: 1;
+  max-height: 100%;
+}
+ 
+.logo{
+  font-family: 'good_timesregular';
+}
+.initial_login {
+  text-align: center;
+  margin-top: 2vh;
+  float: right;
+}
+
+
+.nav>li>a:hover, .nav>li>a:focus, .nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
+    background:#fff;
+}
+
+.dropdown-menu>li>a {
+    color:#428bca;
+}
+.dropdown ul.dropdown-menu {
+    border-radius:4px;
+    box-shadow:none;
+    margin-top:20px;
+    width:300px;
+}
+.dropdown ul.dropdown-menu:before {
+    border-bottom: 10px solid #fff;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    z-index: 10;
+}
+.dropdown ul.dropdown-menu:after {
+    border-bottom: 12px solid #ccc;
+    border-right: 12px solid transparent;
+    border-left: 12px solid transparent;
+    position: absolute;
+    top: -12px;
+    right: 14px;
+    z-index: 9;
+}
+#name {
+  font-size: 23px;
+  float: bottom;
+}
+.post_container {
+  color: black;
+}
+.post_container span {
+  color: white;
+  font-size: 150%;
+}
+    #wrapper{
+      margin: auto;
+      height: auto;
+      width: auto;
+      background: url('https://dl.dropbox.com/s/dfttxitcmf86nfx/bg.png');
+      border: 1px solid #133f62;
+      border-radius: 80px;
+      box-shadow: inset 0px 1px 0px rgba(255,255,255,0.3),
+            inset 0px -25px 75px rgba(0,0,0,0.4),
+            0px 1px 0px #133f62,
+            0px 4px 5px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    
+    #text {
+      color: black;
+    }
+    .animate {
+      -webkit-animation-duration: 1.5s;
+        -moz-animation-duration: 1.5s;
+        -ms-animation-duration: 1.5s;
+        -o-animation-duration: 1.5s;
+        animation-duration: 1.5s;
+      -webkit-animation-timing-function: ease-in-out;
+        -moz-animation-timing-function: ease-in-out;
+        -ms-animation-timing-function: ease-in-out;
+        -o-animation-timing-function: ease-in-out;
+        animation-timing-function: ease-in-out;
+    }
+
+    .dropIn {
+      -webkit-animation-name: dropIn;
+        -moz-animation-name: dropIn;
+        -ms-animation-name: dropIn;
+        -o-animation-name: dropIn;
+        animation-name: dropIn;
+    }
+
+    @-webkit-keyframes dropIn {
+      0% {
+        -webkit-transform: translateY(-1000px);
+      }
+      25% {
+        -webkit-transform: translateY(-1000px);
+      }
+      50% {
+        -webkit-transform: translateY(-200px);
+      }
+      75% {
+        -webkit-transform: translateY(15px);
+      }
+      85% {
+        -webkit-transform: translateY(5px);
+      }
+      90% {
+        -webkit-transform: translateY(2px);
+      }
+      100% {
+        -webkit-transform: translateY(0);
+      }
+    }
+    @-moz-keyframes dropIn {
+      0% {
+        -moz-transform: translateY(-1000px);
+      }
+      25% {
+        -moz-transform: translateY(-1000px);
+      }
+      50% {
+        -moz-transform: translateY(-200px);
+      }
+      75% {
+        -moz-transform: translateY(15px);
+      }
+      85% {
+        -moz-transform: translateY(5px);
+      }
+      90% {
+        -moz-transform: translateY(2px);
+      }
+      100% {
+        -moz-transform: translateY(0);
+      }
+    }
+    @-ms-keyframes dropIn {
+      0% {
+        -ms-transform: translateY(-1000px);
+      }
+      25% {
+        -ms-transform: translateY(-1000px);
+      }
+      50% {
+        -ms-transform: translateY(-200px);
+      }
+      75% {
+        -ms-transform: translateY(15px);
+      }
+      85% {
+        -ms-transform: translateY(5px);
+      }
+      90% {
+        -ms-transform: translateY(2px);
+      }
+      100% {
+        -ms-transform: translateY(0);
+      }
+    }
+    @-o-keyframes dropIn {
+      0% {
+        -o-transform: translateY(-1000px);
+      }
+      25% {
+        -o-transform: translateY(-1000px);
+      }
+      50% {
+        -o-transform: translateY(-200px);
+      }
+      75% {
+        -o-transform: translateY(15px);
+      }
+      85% {
+        -o-transform: translateY(5px);
+      }
+      90% {
+        -o-transform: translateY(2px);
+      }
+      100% {
+        -o-transform: translateY(0);
+      }
+    }
+    @keyframes dropIn {
+      0% {
+        transform: translateY(-1000px);
+      }
+      25% {
+        transform: translateY(-1000px);
+      }
+      50% {
+        transform: translateY(-200px);
+      }
+      75% {
+        transform: translateY(15px);
+      }
+      85% {
+        transform: translateY(5px);
+      }
+      90% {
+        transform: translateY(2px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
