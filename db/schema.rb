@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201222500) do
+ActiveRecord::Schema.define(version: 20151202192302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,23 @@ ActiveRecord::Schema.define(version: 20151201222500) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.text     "bio"
+    t.string   "pic_one_file_name"
+    t.string   "pic_one_content_type"
+    t.integer  "pic_one_file_size"
+    t.datetime "pic_one_updated_at"
+    t.string   "pic_two_file_name"
+    t.string   "pic_two_content_type"
+    t.integer  "pic_two_file_size"
+    t.datetime "pic_two_updated_at"
+    t.string   "pic_three_file_name"
+    t.string   "pic_three_content_type"
+    t.integer  "pic_three_file_size"
+    t.datetime "pic_three_updated_at"
+    t.string   "pic_four_file_name"
+    t.string   "pic_four_content_type"
+    t.integer  "pic_four_file_size"
+    t.datetime "pic_four_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

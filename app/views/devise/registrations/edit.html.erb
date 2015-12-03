@@ -1,39 +1,73 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+    <% if resource.errors.any? %>
+      <ul>
+        <% resource.errors.full_messages.each do |err| %>
+          <li><%= err %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+      <div class="container-fluid" id="primary-content">
+        <div class="row one settings">
+          <div class="col-xs-4 top-left">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="profile_pic"src=<%= current_user.avatar.url(:thumb) %>></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/users/<%=current_user.id%>/settings">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+                    <li class="divider"></li>
+                    <li><a href="/users/edit">Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><%= link_to "Log Out", destroy_user_session_path, method: :delete %><span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+                  </ul>
+                </li>
+              </ul>
+                <span id="name"><%= current_user.name %></span>
+          </div>
+          <div class="col-xs-4 top-middle">
+            <h1>Vite</h1>
+          </div>
+          <div class="col-xs-4 top-right">
+            <a href="/"><span class="glyphicon glyphicon-home"></span></a>
+          </div>
+        </div> <!-- end of row 1 -->
+        <div class="row two settings">
+          <div class="container">
+            <div class="hero-unit">
+            <a class="show_profile_link">Show Profile</a><br>
+            <%= render "show_profile/show_profile" %>
+            <span><%= current_user.name%>  </span>
+            <span><%=current_user.age%></span>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), url: users_path, html: { multipart: true }, html: { method: :put }) do |f| %>
+                <h1>About me </h1><br/>
+                <span id="text"><%= f.text_area :bio%></span>
+                <h1>Add pictures</h1>
+                <%= f.file_field :pic_one %>
+                <%= f.file_field :pic_two %>
+                <%= f.file_field :pic_three %>
+                <%= f.file_field :pic_four %>
+                
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+                <div class="actions" id="text">
+                  <%= f.submit "Update" %>
+                </div>
+              <% end %><br><br>
+              <%= link_to "Back", :back %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+              <p><div id="text"><%= button_to "Delete Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></div></p>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+            </div>
+          </div>
+        </div> <!-- end of row 2 -->
+        <div class="row three settings">
+          <h1>test</h1>
+          
+        </div> <!-- end of row three -->
+      </div> <!-- end of container  -->
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>

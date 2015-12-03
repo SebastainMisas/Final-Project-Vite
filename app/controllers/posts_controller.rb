@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 	def index
 		
 		@posts = Post.order("created_at DESC")
+
 		render"index"
 	end
 	def new
@@ -11,7 +12,9 @@ class PostsController < ApplicationController
 		render"new"
 	end
 	def create
-		new_post = Post.create(post_params)
+		id = params[:user_id]
+		@users = User.find_by(id: id)
+		new_post = @users.posts.new(post_params)
 		if new_post.save
 			redirect_to"/"
 		else

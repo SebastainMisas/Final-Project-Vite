@@ -1,7 +1,9 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+.show_profile_modal {
+  color: black;
+}
 #post_avatar {
   margin-left: auto;
   margin-right: auto;
@@ -62,9 +64,7 @@
 .btn-circle.green:hover {
 	background-color: #99CC33
 }
-.glyphicon {
-	width: 40px;
-}
+
 .btn-circle{
   display: inline-block;
   vertical-align: middle;
