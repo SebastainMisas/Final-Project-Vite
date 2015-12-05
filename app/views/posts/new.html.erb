@@ -11,7 +11,9 @@
 				            <li class="divider"></li>
 				            <li><a href="/users/edit">Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
 				            <li class="divider"></li>
-				            <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
+				            <li><a href="/users/<%=current_user.id%>/requests">Vite Requests<span class="badge pull-right"> 0 </span></a></li>
+				            <li class="divider"></li>
+				            <li><a href="/users/<%=current_user.id%>/messages">Messages<span class="badge pull-right"> 0 </span></a></li>
 				            <li class="divider"></li>
 				            <li><a href="#"><%= link_to "Log Out", destroy_user_session_path, method: :delete %><span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
 				          </ul>
@@ -50,6 +52,6 @@
 					</div>
 				</div> <!-- end of row 2 -->
 				<div class="row three settings">
-					<h1>test</h1>
+					<FOOTER>Vite Copyright 2015 All rights reserved.</FOOTER>
 				</body>
 				

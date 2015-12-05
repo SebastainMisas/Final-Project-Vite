@@ -11,15 +11,14 @@
 				            <li class="divider"></li>
 				            <li><a href="/users/edit">Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
 				            <li class="divider"></li>
-				            <li><a href="/users/<%=current_user.id%>/requests">Vite Requests<span class="badge pull-right"> 0</span></a></li>
+				            <li><a href="/users/<%=current_user.id%>/requests">Vite Requests<span class="badge pull-right"> 0 </span></a></li>
 				            <li class="divider"></li>
-				            <li><a href="/users/<%=current_user.id%>/messages">Messages<span class="badge pull-right">0 </span></a></li>
+				            <li><a href="/users/<%=current_user.id%>/messages">Messages<span class="badge pull-right"> 0 </span></a></li>
 				            <li class="divider"></li>
 				            <li><a href="#"><%= link_to "Log Out", destroy_user_session_path, method: :delete %><span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
 				          </ul>
 				        </li>
 				      </ul>
-				      	<span id="name"><%= current_user.name %></span>
 					</div>
 					<div class="col-xs-4 top-middle">
 						<h1>Vite</h1>
@@ -30,11 +29,31 @@
 				</div> <!-- end of row 1 -->
 				<div class="row two settings">
 					<div class="container">
-						<div class="hero-unit">
-						<a href="/users/<%=current_user.id%>">Show Profile</a><br>
-						<span><%= current_user.name%>  </span>
-						<span><%=current_user.age%></span>
-						<span><%</span>
+						<div class="hero-unit request">
+							<% if @requests == [] %>
+								<h1>No new requests</h1>
+							<%end%>
+							<% @requests.each do |request| %>
+								<div class="request_profiles">
+									<img class="senders_img" data-sender-id="<%=request.sender.id%>" src="<%=request.sender.avatar.url(:thumb)%>">
+									<span class="senders_name"><%=request.sender.name%></span>
+
+						<!-- green accept button -->
+
+									<button type="button" data-request-id="<%=request.id%>"class="btn btn-circle vite" data-event-creator-id="<%= current_user.id %>">Vite <span class="glyphicon glyphicon-envelope accept pull-right" aria-hidden="true"></span></button>
+
+										<!-- yellow next time button -->
+
+									<button type="button" data-request-id="<%=request.id%>" data-current-user= "<%= current_user.id %>"class="btn btn-circle next_time">Next Time <span class="glyphicon glyphicon-remove decline pull-right" aria-hidden="true"></span></button>
+										<!-- invited  -->
+									<div class="invited">
+										Invited
+									</div>
+									<div class="message">
+										<a href="/users/<%= current_user.id %>/messages">Message</a>
+									</div>
+								</div><br><br>
+							<%end%>
 						</div>
 					</div>
 				</div> <!-- end of row 2 -->
@@ -44,4 +63,5 @@
 				</div> <!-- end of row three -->
 			</div> <!-- end of container  -->
 	</body>
+	<%= render "show_profile/show_senders_profile" %>
 </html>

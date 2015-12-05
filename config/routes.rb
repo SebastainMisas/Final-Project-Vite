@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
 	get "/" => "posts#index"
-  devise_for :users, controllers: {registrations: 'registrations'}
-  resources :users do 
-     resources :settings
-     resources :posts
-   end
-   get "/api/user/:id" => "users#show"
+	post "/posts/:post_id/requests" => "requests#create"
+	get "/requests" => "request#index"
+	devise_for :users, controllers: {registrations: 'registrations'}
+	resources :users do 
+	  	resources :requests
+	   	resources :settings
+	   	resources :posts
+	   	resources :messages
+   	end
+   	get "/api/user/:id" => "users#show"
+   	get "/api/request/:id/nexttime" => "requests#nexttime"
+   	get "/api/request/:id/invited" => "requests#invited"
 end

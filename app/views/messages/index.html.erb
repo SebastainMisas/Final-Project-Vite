@@ -1,5 +1,4 @@
-
-	<body>
+<body>
 			<div class="container-fluid" id="primary-content">
 				<div class="row one settings">
 					<div class="col-xs-4 top-left">
@@ -11,15 +10,14 @@
 				            <li class="divider"></li>
 				            <li><a href="/users/edit">Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
 				            <li class="divider"></li>
-				            <li><a href="/users/<%=current_user.id%>/requests">Vite Requests<span class="badge pull-right"> 0</span></a></li>
+				            <li><a href="/users/<%=current_user.id%>/requests">Vite Requests<span class="badge pull-right"> 0 </span></a></li>
 				            <li class="divider"></li>
-				            <li><a href="/users/<%=current_user.id%>/messages">Messages<span class="badge pull-right">0 </span></a></li>
+				            <li><a href="/users/<%=current_user.id%>/messages">Messages<span class="badge pull-right"> 0 </span></a></li>
 				            <li class="divider"></li>
 				            <li><a href="#"><%= link_to "Log Out", destroy_user_session_path, method: :delete %><span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
 				          </ul>
 				        </li>
 				      </ul>
-				      	<span id="name"><%= current_user.name %></span>
 					</div>
 					<div class="col-xs-4 top-middle">
 						<h1>Vite</h1>
@@ -30,11 +28,36 @@
 				</div> <!-- end of row 1 -->
 				<div class="row two settings">
 					<div class="container">
-						<div class="hero-unit">
-						<a href="/users/<%=current_user.id%>">Show Profile</a><br>
-						<span><%= current_user.name%>  </span>
-						<span><%=current_user.age%></span>
-						<span><%</span>
+						<div class="hero-unit request">
+							<div class="accordion" id="accordion2">
+							  <div class="accordion-group">
+							    <div class="accordion-heading">
+							      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+							        Vites
+							      </a>
+							    </div>
+							    <div id="collapseOne" class="accordion-body collapse in">
+							      <div class="accordion-inner">
+							        <% @invited_requests.each do |request| %>
+							        	<h1><%= request.user.name %>, vited you!<h1>
+							        <%end%>
+							      </div>
+							    </div>
+							  </div>
+							  <div class="accordion-group">
+							    <div class="accordion-heading">
+							      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+							        Messages
+							      </a>
+							    </div>
+							    <div id="collapseTwo" class="accordion-body collapse">
+							      <div class="accordion-inner">
+							        <h2>Text</h2>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+							
 						</div>
 					</div>
 				</div> <!-- end of row 2 -->

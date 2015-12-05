@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Vite Feed</title>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-</head>
+
 <body class="body_main">
 		<div class="container-fluid" id="primary-content">
 			<div class="row one">
@@ -23,7 +17,7 @@
 					            <li class="divider"></li>
 					            <li><a>Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
 					            <li class="divider"></li>
-					            <li><a>Messages <span class="badge pull-right"> 42 </span></a></li>
+					            <li><a>Vite list<span class="badge pull-right"> 42 </span></a></li>
 					            <li class="divider"></li>
 					           <li><a>Log out<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
 					          </ul>
@@ -41,12 +35,15 @@
 					            <li class="divider"></li>
 					            <li><a href="users/edit">Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
 					            <li class="divider"></li>
-					            <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
+					            <li><a href="/users/<%=current_user.id%>/requests">Vite Requests<span class="badge pull-right"> 0 </span></a></li>
+					            <li class="divider"></li>
+					            <li><a href="/users/<%=current_user.id%>/messages">Messages<span class="badge pull-right"> 0 </span></a></li>
 					            <li class="divider"></li>
 					           <li><a href="#"><%= link_to "Log Out", destroy_user_session_path, method: :delete %><span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
 					          </ul>
 					        </li>
 					      </ul>
+
 					  <%end%>
 
 				</div>
@@ -54,15 +51,15 @@
 					<h1 class="logo">VITE</h1>
 				</div>
 				<div class="col-xs-4 top-right">
-					<a href="#"><span class="glyphicon glyphicon-envelope"></span></a>
+					<a href="/users/<%=current_user.id%>/requests"><span class="glyphicon glyphicon-envelope"></span></a>
 				</div>
 			</div> <!-- end of row 1 -->
 			<div class="row two">
 				<div class="container">
 					<div class="hero-unit">
 						<% @posts.each_with_index do |post, i| %>
-							<div class="post <%= i == 0 ? "active" : "" %>">
-								<img data-id=<%= post.user_id %> class="img-responsives" src="<%= post.avatar.url %>">
+							<div class="post <%= i == 0 ? "active" : "" %>" data-post-id="<%=post.id%>">
+								<img data-id="<%= post.user.id %>" class="img-responsives" src="<%= post.avatar.url %>">
 								<div class="post-details-container">
 										<div class="details">
 											<span><%= post.venue %></span><br>
@@ -89,7 +86,7 @@
 					<% end %>
 				</div>
 				<div class="col-xs-6 middleright">
-					<button type="button" class="btn btn-request-vite btn-circle green"><i class="glyphicon glyphicon-ok"></i></button>
+					<button type="button" class="btn btn-request-vite btn-circle green" data-sender-id="<%= current_user.id %>"><i class="glyphicon glyphicon-ok"></i></button>
 				</div>
 				
 			</div> <!-- end of row three -->

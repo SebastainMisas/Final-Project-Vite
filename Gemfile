@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+# adding pictures 
 gem "paperclip", "~> 4.3"
 # twitter bootstap for rails
 gem "twitter-bootstrap-rails"
