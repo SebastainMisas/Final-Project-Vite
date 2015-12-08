@@ -1,5 +1,3 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
 
 $(document).on("ready", function (){
 // log in, sign up modals
@@ -9,19 +7,19 @@ $(document).on("ready", function (){
   	$(".sign_up").on("click", function () {
   		$(".sign_up_modal").modal("show");
   	});
-    
+
 // on click of these green and red buttons hide and show the next post 
 // green button 
   	$(".btn-circle.green").on("click", function (event) {
  // if the active posts id matches the last posts id then add class active to the first post again.     
       if ($(".post.active").data("post-id") === $(".post").last().data("post-id")) {
-          $(".post.active").fadeOut();
+          $(".post.active").hide();
           $(".post.active").removeClass("active");
           $(".post").first().addClass("active");
           $(".post.active").fadeIn();
       }
       else {
-        $(".post.active").fadeOut()
+        $(".post.active").hide()
   		  var nextpost = $(".post.active").next()
         $(".post.active").removeClass("active");
         nextpost.addClass("active");
@@ -33,38 +31,36 @@ $(document).on("ready", function (){
     $(".btn-circle.red").on("click", function (event) {
 // if the active posts id matches the last posts id then add class active to the first post again.     
       if ($(".post.active").data("post-id") === $(".post").last().data("post-id")) {
-          $(".post.active").fadeOut();
+          $(".post.active").hide();
           $(".post.active").removeClass("active");
           $(".post").first().addClass("active");
           $(".post.active").fadeIn();
       }
       else {
-        $(".post.active").fadeOut()
+        $(".post.active").hide()
         var nextpost = $(".post.active").next()
         $(".post.active").removeClass("active");
-        nextpost.addClass("active");
-        $(".post.active").fadeIn();
+        nextpost.addClass("active").fadeIn();
       }
     });
 
 
 // when you click on the image of the event a modal will pop up
 // with the event creators information
-    $(".img-responsives").on("click", function (event) {
+    $(".post_img").on("click", function (event) {
       var target = $(event.currentTarget)
       var id = target.data("id")
 
       $.ajax ({
         url: "/api/user/" + id + ".json",
         success: function (response) {
-          console.log(response)
           $(".js_name").text(response.name);
-          $(".js_bio").text(response.bio);
           $(".js_age").text(" " + response.age);
-          $(".js_pic_one").attr("src", response.pic_one_url);
-          $(".js_pic_two").attr("src", response.pic_two_url);
-          $(".js_pic_three").attr("src", response.pic_three_url);
-          $(".js_pic_four").attr("src", response.pic_four_url);
+          $(".js_bio").text(response.bio);
+          $(".js_pic_one").attr("src", response.avatar_url);
+          $(".js_pic_two").attr("src", response.pic_one_url);
+          $(".js_pic_three").attr("src", response.pic_two_url);
+          $(".js_pic_four").attr("src", response.pic_three_url);
         },
 
       });
@@ -73,7 +69,7 @@ $(document).on("ready", function (){
     });
 
 
-// on click of the green button on home screen make a request with that current users id and send that
+// on click of the green button on home screen make a request with that current users id and dat that
 // information to the event creators vite list page
     $(".btn-circle.green").on("click", function (event) {
       var user_click = $(event.currentTarget)

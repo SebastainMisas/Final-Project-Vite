@@ -8,8 +8,7 @@ class RequestsController < ApplicationController
 	end
 	def index
 		@requests = current_user.requests.where(status: "pending")
-		@invited_requests= current_user.requests.where(status: "invited")
-
+		@invited_requests= current_user.invitations.where(status: "invited")
 	end
 	def nexttime
 		request = current_user.requests.find_by(id: params[:id])

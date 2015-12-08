@@ -1,76 +1,62 @@
 
 <body class="body_main">
-		<div class="container-fluid" id="primary-content">
-			<div class="row one">
+	<div class="container-fluid" id="primary-content">
+		<div class="row one">
+			<% if !user_signed_in? %>
+				<div class="col-xs-4 top-left">		
+					<div class="initial_login">
+						<a class="log_in">Login</a>  or 
+						<a class="sign_up">Sign up</a>
+					</div>
+					<ul class="nav navbar-nav">
+						<li class="dropdown">
+					    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span></a>
+					          
+					    </li>
+					</ul>
+				</div>
+					<div class="col-xs-4 top-middle">
+						<h1 class="logo">VITE</h1>
+					</div>	
+			<% else %>
 				<div class="col-xs-4 top-left">
-					 
-				      <% if !user_signed_in? %>
-					      <div class="initial_login">
-							<a class="log_in">Login</a>  or 
-							<a class="sign_up">Sign up</a>
-						  </div>
-						  <ul class="nav navbar-nav">
-					        <li class="dropdown">
-					          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span></a>
-					          <ul class="dropdown-menu">
-					            <li><a>Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-					            <li class="divider"></li>
-					            <li><a>Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-					            <li class="divider"></li>
-					            <li><a>Vite list<span class="badge pull-right"> 42 </span></a></li>
-					            <li class="divider"></li>
-					           <li><a>Log out<span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-					          </ul>
-					        </li>
-					      </ul>
-					  <% else %>
-						
-						<span id="name"><%= current_user.name %></span>
-				
-						  <ul class="nav navbar-nav">
-					        <li class="dropdown">
-					          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="profile_pic"src=<%= current_user.avatar.url(:thumb) %>>
-					          <ul class="dropdown-menu">
-					            <li><a href="/users/<%=current_user.id%>/settings">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-					            <li class="divider"></li>
-					            <li><a href="users/edit">Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-					            <li class="divider"></li>
-					            <li><a href="/users/<%=current_user.id%>/requests">Vite Requests<span class="badge pull-right"> 0 </span></a></li>
-					            <li class="divider"></li>
-					            <li><a href="/users/<%=current_user.id%>/messages">Messages<span class="badge pull-right"> 0 </span></a></li>
-					            <li class="divider"></li>
-					           <li><a href="#"><%= link_to "Log Out", destroy_user_session_path, method: :delete %><span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-					          </ul>
-					        </li>
-					      </ul>
-
-					  <%end%>
+					<a class="dropdown-toggle" data-toggle="dropdown"><img class="profile_pic"src=<%= current_user.avatar.url(:thumb) %>>
+					<span id="name" ><%= current_user.name %></span>
+					<ul class="dropdown-menu">
+						<li><a href="/users/<%=current_user.id%>/settings">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+					    <li class="divider"></li>
+					    <li><a href="users/edit">Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+					   	<li class="divider"></li>
+					    <li><a href="/users/<%=current_user.id%>/requests">Vite Requests<span class="badge pull-right"> <%= @requests.length %></span></a></li>
+					    <li class="divider"></li>
+					    <li><a href="/users/<%=current_user.id%>/messages">Messages<span class="badge pull-right"> <%= @invited_requests.length %></span></a></li>
+					    <li class="divider"></li>
+					    <li><a href="#"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></a></li>
+					</ul>
 
 				</div>
 				<div class="col-xs-4 top-middle">
 					<h1 class="logo">VITE</h1>
-				</div>
+				</div>	
 				<div class="col-xs-4 top-right">
-					<a href="/users/<%=current_user.id%>/requests"><span class="glyphicon glyphicon-envelope"></span></a>
+					<a href="/users/<%=current_user.id%>/requests"><span class="glyphicon glyphicon-list-alt"></span></a>
 				</div>
-			</div> <!-- end of row 1 -->
+			<%end%>
+	</div><!-- end of row 1 -->
+
 			<div class="row two">
 				<div class="container">
 					<div class="hero-unit">
 						<% @posts.each_with_index do |post, i| %>
-							<div class="post <%= i == 0 ? "active" : "" %>" data-post-id="<%=post.id%>">
-								<img data-id="<%= post.user.id %>" class="img-responsives" src="<%= post.avatar.url %>">
+							<div class="post <%= i == 0 ? "active initial" : "" %>" data-post-id="<%=post.id%>">
+								<img data-id="<%= post.user.id %>" class="post_img" src="<%= post.avatar.url %>">
 								<div class="post-details-container">
 										<div class="details">
-											<span><%= post.venue %></span><br>
-											<span>In: <%= post.time %>hrs</span><br>
-											<div>
-											  <input type="checkbox" class="read-more-state" id="post-1" />
-												
-											  <p class="read-more-wrap"><%= post.description[0..30] %><span class="read-more-target"><%= post.description[30..-1] %></span></p>
-											  
-											  <label for="post-1" class="read-more-trigger"></label>
-											</div>
+											<center>
+											<strong><span><%= post.venue %></span></strong><br>
+											<strong><span>In: <%= post.time %>hrs</span></strong><br>
+											</center>
+											  <p><%= post.description %></p>
 										</div>
 								</div>
 							</div>
@@ -86,7 +72,12 @@
 					<% end %>
 				</div>
 				<div class="col-xs-6 middleright">
+					<% if user_signed_in? %>
 					<button type="button" class="btn btn-request-vite btn-circle green" data-sender-id="<%= current_user.id %>"><i class="glyphicon glyphicon-ok"></i></button>
+					<% else %>
+					<button type="button" class="btn btn-request-vite btn-circle green"><i class="glyphicon glyphicon-ok"></i></button>
+					<%end%>
+
 				</div>
 				
 			</div> <!-- end of row three -->

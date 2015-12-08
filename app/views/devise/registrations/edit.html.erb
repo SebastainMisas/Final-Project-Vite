@@ -1,3 +1,4 @@
+<body class="body_main">
     <% if resource.errors.any? %>
       <ul>
         <% resource.errors.full_messages.each do |err| %>
@@ -11,20 +12,19 @@
         <div class="row one settings">
           <div class="col-xs-4 top-left">
             <ul class="nav navbar-nav">
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="profile_pic"src=<%= current_user.avatar.url(:thumb) %>></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="/users/<%=current_user.id%>/settings">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-                    <li class="divider"></li>
-                    <li><a href="/users/edit">Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
-                    <li class="divider"></li>
-                    <li><a href="#"><%= link_to "Log Out", destroy_user_session_path, method: :delete %><span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-                  </ul>
-                </li>
-              </ul>
-                <span id="name"><%= current_user.name %></span>
+                 <a class="dropdown-toggle" data-toggle="dropdown"><img class="profile_pic"src=<%= current_user.avatar.url(:thumb) %>>
+                      <span id="name"><%= current_user.name %></span>
+                    <ul class="dropdown-menu">
+                      <li><a href="/users/<%=current_user.id%>/settings">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+                      <li class="divider"></li>
+                      <li><a href="users/edit">Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+                      <li class="divider"></li>
+                      <li><a href="/users/<%=current_user.id%>/requests">Vite Requests<span class="badge pull-right"></span></a></li>
+                      <li class="divider"></li>
+                      <li><a href="/users/<%=current_user.id%>/messages">Messages<span class="badge pull-right"></span></a></li>
+                      <li class="divider"></li>
+                     <li><a href="#"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></a></li>
+                    </ul>
           </div>
           <div class="col-xs-4 top-middle">
             <h1>Vite</h1>
@@ -35,39 +35,32 @@
         </div> <!-- end of row 1 -->
         <div class="row two settings">
           <div class="container">
-            <div class="hero-unit">
-            <a class="show_profile_link">Show Profile</a><br>
-            <%= render "show_profile/show_profile" %>
-            <span><%= current_user.name%>  </span>
-            <span><%=current_user.age%></span>
+              <center>
+                <button class="show_profile_link">Show Profile</button><br><br>
 
-              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), url: users_path, html: { multipart: true }, html: { method: :put }) do |f| %>
-                <h1>About me </h1><br/>
-                <span id="text"><%= f.text_area :bio%></span>
-                <h1>Add pictures</h1>
-                <%= f.file_field :pic_one %>
-                <%= f.file_field :pic_two %>
-                <%= f.file_field :pic_three %>
-                <%= f.file_field :pic_four %>
-                
+                  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), url: users_path, html: { multipart: true }, html: { method: :put }) do |f| %>
+                    <span class="text-effect">About me </span><br><br>
+                    <span id="text"><%= f.text_area :bio%></span><br><br>
+                    <span class="text-effect">Add pictures</span><br><br>
+                    <div class="add_pics">
+                      
+                      <%= f.file_field :pic_one, :class => "photo-attach" %>
+                      <%= f.file_field :pic_two, :class => "photo-attach"%>
+                      <%= f.file_field :pic_three, :class => "photo-attach" %>
+                    </div><br><br>
 
-                <div class="actions" id="text">
-                  <%= f.submit "Update" %>
-                </div>
-              <% end %><br><br>
-              <%= link_to "Back", :back %>
-
-              <p><div id="text"><%= button_to "Delete Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></div></p>
-
-            </div>
+                    <div class="actions" id="text">
+                      <%= f.submit "Update", :class => "submit-btn" %>
+                    </div>
+                  <% end %><br><br>
+                  <%= link_to "Back", :back %>
+              </center>
+              <p><div id="text"><%= button_to "Delete Account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => "submit-btn"%></div></p>
           </div>
         </div> <!-- end of row 2 -->
-        <div class="row three settings">
-          <h1>test</h1>
-          
-        </div> <!-- end of row three -->
+        
       </div> <!-- end of container  -->
-
-
+</body>
+<%= render "show_profile/show_profile" %>
 
 

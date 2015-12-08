@@ -1,43 +1,69 @@
 // Place all the styles related to the requests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.message {
+	display: none;
+  	color: black; 
+  	font-family: "Courier";
+  	font-size: 20px;
+  	margin: 10px 0 0 10px;
+  	white-space: nowrap;
+  	overflow: hidden;
+  	width: 30em;
+  	animation: type 4s steps(60, end); 
+}
+
+
+
+
+.senders_name {
+	position: absolute;
+	left: 46vw;
+	font-size: 120%;
+	margin-top: -2vh;
+}
+
+.carousel {
+	width:640px;
+    height:360px;
+}
 .request_profiles {
-	left: 5vw;
-	border-style: inset;
-	border-width: 5px;
-	border-color: silver;
-	border-radius: 70px;
-	padding-right: 32vw;
-	padding-top: 3vh;
-	padding-bottom: 2vh;
+	margin-top: 3vh;
+	margin-left: auto;
+	margin-right: auto;
 }
 .senders_img {
-	border-radius: 120px;
+	width: 80px;
+  	height: 70px;
+  	border-radius: 99em;
+  	box-shadow: 0 2px 2px grey;
 }
 .vite {
 	background-color: green;
-	width: 15vw;
+	width: 8vw;
 	height: 5vh;
 	border-radius: 120px;
+	text-align: right;
 }
 .next_time{
 	background-color: yellow;
 	color: black;
-	width: 15vw;
+	width: 8vw;
 	height: 5vh;
+	font-size: 70%;
 	border-radius: 120px;
+	text-align: right;
 }
+
 .glyphicon-envelope.accept {
 	font-size: 120%;
-	top: 10%;
+	right: 5vw;
 }
 .glyphicon-remove.decline {
-	top: 10%;
 	font-size: 120%;
+	right: 6vw;
 }
-.hero-unit.request {
-	height: auto;
-}
+
 .invited {
 	background-color: black;
 	color: silver;
@@ -48,17 +74,4 @@
 	border-width: 2px;
 	border-color: silver;
 	display: none;
-}
-.message {
-	background-color: black;
-	color: silver;
-	font-family: "Coronetscript", cursive;
-	width: 15vw;
-	border-radius: 70px;
-	border-style: outset;
-	border-width: 2px;
-	border-color: silver;
-	display: none;
-	float: right;
-	margin-top: 5vh;
 }

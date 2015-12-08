@@ -1,17 +1,23 @@
-<div class="modal fade senders_profile_modal">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button class="close" data-dismiss="modal">
-		          <span>&times;</span>
-		        </button>
-		        <span class="js_name"></span><span class="js_age"></span><br>
-		        <span>About Me</span><br>
-		        <p class="js_bio"></p>
-		      </div>
 
-		      <div class="modal-body">
-		      	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Modal -->
+    <div class="modal fade senders_profile_modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" id="myModalLabel">More About <strong class="js_name"></strong></h4>
+                    </div>
+                <div class="modal-body">
+                    <center>
+                    <img width="140" height="140" border-radius="60px" class="js_pic_one avatar"></a><br><br>
+                    <span class="js_name">Joe Sixpack</span><span class="js_age"></span>
+                    </center>
+                    <hr>
+                    
+                    <strong>Bio: </strong><br><p class="js_bio">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sem dui, tempor sit amet commodo a, vulputate vel tellus.</p>
+                    <br>
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
 				  <!-- Indicators -->
 				  <ol class="carousel-indicators">
 				    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -23,19 +29,19 @@
 				  <!-- Wrapper for slides -->
 				  <div class="carousel-inner" role="listbox">
 				    <div class="item active">
-				      <img class="js_pic_one">
+				      <img class="js_pic_one" >
 				    </div>
 
 				    <div class="item">
-				      <img class="js_pic_two">
+				      <img class="js_pic_two" >
 				    </div>
 
 				    <div class="item">
-				      <img class="js_pic_three">
+				      <img class="js_pic_three" >
 				    </div>
 
 				    <div class="item">
-				      <img class="js_pic_four">
+				      <img class="js_pic_four" >
 				    </div>
 				  </div>
 
@@ -49,7 +55,14 @@
 				    <span class="sr-only">Next</span>
 				  </a>
 				</div>
-
-		   </div>
-		</div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <center>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">I've heard enough about <strong class="js_name"></strong></button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

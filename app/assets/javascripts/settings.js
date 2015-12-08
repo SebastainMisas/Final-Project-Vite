@@ -4,5 +4,4 @@ $(document).on("ready", function (){
 	$(".btn-vites.feed").on("click", function goToURL() {
       location.href = '/posts';
   	});
-
 });

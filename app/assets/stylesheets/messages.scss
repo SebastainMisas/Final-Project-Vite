@@ -1,3 +1,58 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.messages_profile {
+	margin-left: -61%
+}
+
+.glyphicon.glyphicon-remove.messages {
+	font-size: 120%;
+	color: red;
+}
+.glyphicon.glyphicon-remove.messages:hover {
+	font-size: 140%;
+	color: red;
+}
+.vite-message {
+	font-size: 130%
+}
+.messages_header {
+	font-size: 170%;
+	color: black;
+}
+.glyphicon.glyphicon-envelope.messages {
+    top: 1vh;
+    font-size: 30px;
+}
+.glyphicon.glyphicon-comment.messages {
+    top: 1vh;
+    font-size: 30px;
+}
+
+.accordion-heading {
+	border-width: 1px;
+    border-style: outset;
+    border-radius: 10px;
+    background-color: #B4A0BF;
+    background: #B4A0BF -webkit-gradient(linear, left top, left bottom, from(#E2E5E4), to(#B4A0BF)) no-repeat;
+    background: #B4A0BF -moz-linear-gradient(top, #E2E5E4, #B4A0BF) no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#E2E5E4, endColorstr=#B4A0BF) no-repeat;
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#E2E5E4, endColorstr=#E2E5E4)" no-repeat;
+}
+
+.accordion-group {
+	border-width: 1px;
+    border-style: inset;
+    border-radius: 10px;
+    background-color: #B4A0BF;
+    background: #B4A0BF -webkit-gradient(linear, left top, left bottom, from(#E2E5E4), to(#B4A0BF)) no-repeat;
+    background: #B4A0BF -moz-linear-gradient(top, #E2E5E4, #B4A0BF) no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#E2E5E4, endColorstr=#B4A0BF) no-repeat;
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#E2E5E4, endColorstr=#E2E5E4)" no-repeat;
+
+}
+.accordion {
+	width: 70vw;
+	margin-left: auto;
+	margin-right: auto;
+}

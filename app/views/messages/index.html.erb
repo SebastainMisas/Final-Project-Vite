@@ -1,45 +1,50 @@
-<body>
+
+<body class="body_main">
 			<div class="container-fluid" id="primary-content">
-				<div class="row one settings">
+				<div class="row one ">
 					<div class="col-xs-4 top-left">
-						<ul class="nav navbar-nav">
-				        <li class="dropdown">
-				          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="profile_pic"src=<%= current_user.avatar.url(:thumb) %>></a>
-				          <ul class="dropdown-menu">
-				            <li><a href="/users/<%=current_user.id%>/settings">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-				            <li class="divider"></li>
-				            <li><a href="/users/edit">Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-				            <li class="divider"></li>
-				            <li><a href="/users/<%=current_user.id%>/requests">Vite Requests<span class="badge pull-right"> 0 </span></a></li>
-				            <li class="divider"></li>
-				            <li><a href="/users/<%=current_user.id%>/messages">Messages<span class="badge pull-right"> 0 </span></a></li>
-				            <li class="divider"></li>
-				            <li><a href="#"><%= link_to "Log Out", destroy_user_session_path, method: :delete %><span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-				          </ul>
-				        </li>
-				      </ul>
+						 <a class="dropdown-toggle" data-toggle="dropdown"><img class="profile_pic"src=<%= current_user.avatar.url(:thumb) %>>
+					          	<span id="name"><%= current_user.name %></span>
+					          <ul class="dropdown-menu">
+					            <li><a href="/users/<%=current_user.id%>/settings">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+					            <li class="divider"></li>
+					            <li><a href="/users/edit">Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+					            <li class="divider"></li>
+					            <li><a href="/users/<%=current_user.id%>/requests">Vite Requests<span class="badge pull-right"> <%=@requests.length%></span></a></li>
+					            <li class="divider"></li>
+					            <li><a href="/users/<%=current_user.id%>/messages">Messages<span class="badge pull-right"> <%=@invited_requests.length%></span></a></li>
+					            <li class="divider"></li>
+					           <li><a href="#"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></a></li>
+					          </ul>
 					</div>
 					<div class="col-xs-4 top-middle">
-						<h1>Vite</h1>
+						
 					</div>
 					<div class="col-xs-4 top-right">
 						<a href="/"><span class="glyphicon glyphicon-home"></span></a>
 					</div>
 				</div> <!-- end of row 1 -->
-				<div class="row two settings">
-					<div class="container">
-						<div class="hero-unit request">
+				<div class="row two ">
+					<div class="container messages">
 							<div class="accordion" id="accordion2">
 							  <div class="accordion-group">
 							    <div class="accordion-heading">
 							      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-							        Vites
+							      	<div class=" glyphicon glyphicon-envelope messages"></div>
+							      	<span class="messages_header">Vites</span>
+							       
 							      </a>
 							    </div>
 							    <div id="collapseOne" class="accordion-body collapse in">
 							      <div class="accordion-inner">
 							        <% @invited_requests.each do |request| %>
-							        	<h1><%= request.user.name %>, vited you!<h1>
+							        <span class="invitation-sender" data-invitation-sender-id="<%=request.sender.id%>"></span>
+							        <div class="messages_profile">
+							        	<span class="js-hide-vite glyphicon glyphicon-remove messages" data-message-id="<%=request.id%>"> </span>
+										<img class="senders_img messages" data-sender-id="<%=request.user.id%>" src="<%=request.post.avatar.url(:thumb)%>">
+							        	<span class="vite-message"> <%= request.user.name %>, vited you!<span>
+							 
+							        </div><br>
 							        <%end%>
 							      </div>
 							    </div>
@@ -47,24 +52,30 @@
 							  <div class="accordion-group">
 							    <div class="accordion-heading">
 							      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-							        Messages
+							      	<div class="glyphicon glyphicon-comment messages"></div>
+							        <span class="messages_header">Messages</span>
 							      </a>
 							    </div>
 							    <div id="collapseTwo" class="accordion-body collapse">
 							      <div class="accordion-inner">
-							        <h2>Text</h2>
+					<!-- chat messages -->
+									<div id="messagesDiv"></div>
+									<span id="current_user_name" data-users-name="<%=current_user.name%>" data-current-user-id="<%=current_user.id%>"></span>
+							        
+    								<input type='text' id='messageInput' placeholder='Message'>
+
 							      </div>
 							    </div>
-							  </div>
 							</div>
 							
 						</div>
 					</div>
 				</div> <!-- end of row 2 -->
-				<div class="row three settings">
-					<FOOTER>Vite Copyright 2015 All rights reserved.</FOOTER>
+				<center>
+				<div class="row three messages">
 					
 				</div> <!-- end of row three -->
+			</center>
 			</div> <!-- end of container  -->
 	</body>
-</html>
+	<%= render "show_profile/show_message_profile" %>

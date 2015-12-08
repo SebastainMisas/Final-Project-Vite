@@ -12,4 +12,6 @@ Rails.application.routes.draw do
    	get "/api/user/:id" => "users#show"
    	get "/api/request/:id/nexttime" => "requests#nexttime"
    	get "/api/request/:id/invited" => "requests#invited"
+   	get "/api/messages/:id/remove" => "messages#remove"
+
 end

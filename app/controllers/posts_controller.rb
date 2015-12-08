@@ -1,11 +1,16 @@
 class PostsController < ApplicationController
 	def index
-		
 		@posts = Post.order("created_at DESC")
-
+	# to update the navigations (reqeusts/ messsages) count
+	if user_signed_in?
+		@invited_requests= current_user.invitations.where(status: "invited")
+		@requests = current_user.requests.where(status: "pending")
 		render"index"
 	end
+	end
 	def new
+		@invited_requests= current_user.invitations.where(status: "invited")
+		@requests = current_user.requests.where(status: "pending")
 		id = params[:user_id]
 		@users = User.find_by(id: id)
 		@post = @users.posts.new

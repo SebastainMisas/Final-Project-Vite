@@ -10,12 +10,12 @@ $(document).on("ready", function (){
         success: function (response) {
           console.log(response);
           $(".js_name").text(response.name);
-          $(".js_bio").text(response.bio);
           $(".js_age").text(" " + response.age);
-          $(".js_pic_one").attr("src", response.pic_one_url);
-          $(".js_pic_two").attr("src", response.pic_two_url);
-          $(".js_pic_three").attr("src", response.pic_three_url);
-          $(".js_pic_four").attr("src", response.pic_four_url);
+          $(".js_bio").text(response.bio);
+          $(".js_pic_one").attr("src", response.avatar_url);
+          $(".js_pic_two").attr("src", response.pic_one_url);
+          $(".js_pic_three").attr("src", response.pic_two_url);
+          $(".js_pic_four").attr("src", response.pic_three_url);
         },
 
       });
@@ -30,7 +30,8 @@ $(document).on("ready", function (){
 		$.ajax ({
 			url: "/api/request/" + id + "/nexttime",
 			success: function () {
-				target.closest(".request_profiles").fadeOut()
+				target.parent().fadeOut();
+				console.log(target.parent());
 			},
 		});
 	});
@@ -42,9 +43,11 @@ $(document).on("ready", function (){
 		$.ajax ({
 			url: "/api/request/" + id + "/invited",
 			success: function (response) {
-				$(".btn-circle.vite").fadeOut();
-				$(".btn-circle.next_time").fadeOut();
-				$(".message").fadeIn();
+				console.log(response);
+				target.parent().find('.next_time').fadeOut();
+				target.closest(".btn-circle.vite").fadeOut();
+				$(".btn-circle.vite").parent().find('.senders_name').fadeOut();
+				target.parent().find('.message').show();
 			},
 		});
 	});
