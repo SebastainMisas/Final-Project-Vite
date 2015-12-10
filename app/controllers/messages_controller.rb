@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+before_action :authenticate_user!
 	def index
 		@invited_requests= current_user.invitations.where(status: "invited")
 	# to update the navigations (reqeusts/ messsages) count

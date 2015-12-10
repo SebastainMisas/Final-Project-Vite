@@ -1,12 +1,25 @@
 
 $(document).on("ready", function (){
-// instant messaging system 	
-	var current_user_id = $('#current_user_name').data("current-users-id");
-    var inviation_sender = $(".invitation-sender").data("invitation-sender-id")								
-	var chatRef = new Firebase('https://viteapp1.firebaseio.com/messages/' + inviation_sender + "/" + current_user_id);
+	var chatRef 
+	var requestee
+	var invitation_sender
+	$(".js-message-btn").on("click", function (event) {
+		
+		console.log(event)
+		var target = $(event.currentTarget)
+    	requestee = target.data('requestee-sender-id')
+    	invitation_sender = target.data('invitation-sender-id')
+    	console.log("",invitation_sender, requestee)
+    	$('#messagesDiv').empty()
+		chatRef = new Firebase('https://viteapp1.firebaseio.com/messages/' + invitation_sender + "/" + requestee);	
+		chatRef.on('child_added', function(snapshot) {
+				var message = snapshot.val();
+			displayChatMessage(message.name, message.text);
+		});
+	});
 
-//on keypress of keycode 13 wicth is the enter button. 
-      $('#messageInput').keypress(function (e) {
+// on keypress if enter key push message into database
+	$('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
           var name = $('#current_user_name').data("users-name");
           var text = $('#messageInput').val();
@@ -14,10 +27,15 @@ $(document).on("ready", function (){
           $('#messageInput').val('');
         }
       });
-      	chatRef.on('child_added', function(snapshot) {
-  			var message = snapshot.val();
-			displayChatMessage(message.name, message.text);
-		});
+
+// on click of the send button push message into database
+      $('.glyphicon-send.to_invitor').on("click", function () {
+          var name = $('#current_user_name').data("users-name");
+          var text = $('#messageInput').val();
+          chatRef.push({name: name, text: text});
+          $('#messageInput').val('');
+      });
+// adding messages in a message div      	
 	function displayChatMessage(name, text) {
         $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
         $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;

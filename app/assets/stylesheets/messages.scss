@@ -1,8 +1,27 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.messages_profile {
-	margin-left: -61%
+.message-sender-img {
+	width: 80px;
+  height: 70px;
+  border-radius: 99em;
+}
+.js-message-invitee-btn {
+	background-color: rgba(0, 0, 0, 0);
+	border-radius: 30px;
+}
+.js-message-invitee-btn:hover {
+	color: blue;
+}
+#messagesDiv {
+	text-align: left;
+}
+#messageInput {
+	opacity: 0.2;
+	width: 90%;
+}
+.glyphicon.glyphicon-send {
+	height: 26px;
 }
 
 .glyphicon.glyphicon-remove.messages {
@@ -28,6 +47,7 @@
     top: 1vh;
     font-size: 30px;
 }
+
 
 .accordion-heading {
 	border-width: 1px;

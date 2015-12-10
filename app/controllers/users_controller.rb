@@ -11,4 +11,12 @@ before_action :authenticate_user!
         format.json { render :json => @user.to_json(:methods => [ :pic_one_url, :pic_two_url, :pic_three_url, :pic_four_url, :avatar_url]) }
     end
   end
+  def invited_list_messages
+  # to update the navigations (reqeusts/ messsages) count
+    @invited_requests= current_user.invitations.where(status: "invited")
+    @requests = current_user.requests.where(status: "pending")
+  # my vited list
+  	@my_invited_list = current_user.requests.where(status: "invited")
+  	render "invited_list"
+  end
 end

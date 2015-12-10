@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+before_action :authenticate_user!
 	def index
 		@posts = Post.order("created_at DESC")
 	# to update the navigations (reqeusts/ messsages) count
@@ -9,8 +10,10 @@ class PostsController < ApplicationController
 	end
 	end
 	def new
+	# to update the navigations (reqeusts/ messsages) count
 		@invited_requests= current_user.invitations.where(status: "invited")
 		@requests = current_user.requests.where(status: "pending")
+
 		id = params[:user_id]
 		@users = User.find_by(id: id)
 		@post = @users.posts.new
