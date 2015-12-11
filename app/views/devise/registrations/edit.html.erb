@@ -15,15 +15,13 @@
                  <a class="dropdown-toggle" data-toggle="dropdown"><img class="profile_pic"src=<%= current_user.avatar.url(:thumb) %>>
                       <span id="name"><%= current_user.name %></span>
                     <ul class="dropdown-menu">
-                      <li><a href="/settings">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-                      <li class="divider"></li>
                       <li><a href="/users/edit">Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
                       <li class="divider"></li>
-                      <li><a href="/messages">Messages<span class="badge pull-right"> <%=@invited_requests.length%></span></a></li>
+                      <li><a href="/messages">Messages<span class="badge pull-right"></span></a></li>
                       <li class="divider"></li>
-                      <li><a href="/requests">Vite Requests<span class="badge pull-right"> <%=@requests.length%></span></a></li>
+                      <li><a href="/requests">Vite Requests<span class="badge pull-right"></span></a></li>
                       <li class="divider"></li>
-                      <li><a href="/invited_list/messages">Your Event<span class="badge pull-right"></span></a></li>
+                      <li><a href="/invited_list/messages">Your Event Messages<span class="badge pull-right"></span></a></li>
                       <li class="divider"></li>
                       <li><a href="#"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></a></li>
                    </ul>

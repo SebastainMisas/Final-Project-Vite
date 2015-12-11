@@ -6,15 +6,13 @@
 				 <a class="dropdown-toggle" data-toggle="dropdown"><img class="profile_pic"src=<%= current_user.avatar.url(:thumb) %>>
 			          	<span id="name"><%= current_user.name %></span>
 			          <ul class="dropdown-menu">
-			            <li><a href="/settings">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-			            <li class="divider"></li>
 			            <li><a href="/users/edit">Profile<span class="glyphicon glyphicon-stats pull-right"></span></a></li>
 			            <li class="divider"></li>
 			            <li><a href="/messages">Messages<span class="badge pull-right"> <%=@invited_requests.length%></span></a></li>
 			            <li class="divider"></li>
 			            <li><a href="/requests">Vite Requests<span class="badge pull-right"> <%=@requests.length%></span></a></li>
 			            <li class="divider"></li>
-			    		<li><a href="/invited_list/messages">Your Event<span class="badge pull-right"></span></a></li>
+			    		<li><a href="/invited_list/messages">Your Event Messages<span class="badge pull-right"></span></a></li>
 			    		<li class="divider"></li>
 			           <li><a href="#"><%= link_to "Log Out", destroy_user_session_path, method: :delete %></a></li>
 			         </ul>
@@ -44,7 +42,8 @@
 						        <div class="messages_profile">
 							        <span class="js-hide-vite glyphicon glyphicon-remove messages" data-message-id="<%=request.id%>"> </span>
 									<img class="senders_img messages" data-sender-id="<%=request.sender.id%>" src="<%=request.sender.avatar.url(:thumb)%>">
-							        
+							        <div class="notifications js-notifications-user"></div>
+
 							        <button data-invitation-sender-id="<%= request.user.id %>" data-requestee-id="<%=request.sender.id%>" data-requestee-img="<%=request.sender.avatar.url(:thumb)%>" class="js-message-invitee-btn glyphicon glyphicon-comment"> <%= request.sender.name %></button><br><br>
 						      </div>
 						     <%end%>
@@ -63,10 +62,10 @@
 					      <div class="accordion-inner">
 			<!-- chat messages -->
 			<!-- appending messages to this div -->
-							<img class="message-sender-img">
+							
 							<div id="messagesDiv"></div>
 			<!-- messages input  -->
-							<input type='text' id='messageInput' placeholder='Message'><button class="glyphicon glyphicon-send to_invitee"></button>
+							<input type='text' id='messageInput-user' placeholder='Message'><button class="glyphicon glyphicon-send to_invitee"></button>
 							<span id="current_user_name" data-users-name="<%=current_user.name%>" data-current-user-id="<%=current_user.id%>"></span>
 
 					      </div>

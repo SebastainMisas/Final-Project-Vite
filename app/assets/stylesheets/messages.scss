@@ -1,10 +1,59 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#collapseOne {
+	max-height: 400px;
+	overflow: scroll;
+}
+#collapseTwo {
+	max-height: 400px;
+	overflow: scroll;
+}
+.messages_profile {
+	text-align: left;
+}
+.js-notifications {
+	text-align: center;
+	border-radius: 120px;
+	background-color: red;
+	color: white;
+	width: 20px;
+	position: absolute;
+	margin-top: -69px;
+	margin-left: 88px;
+}
+
+.js-notifications-user {
+	text-align: center;
+	border-radius: 120px;
+	background-color: red;
+	color: white;
+	position: absolute;
+	width: 20px;
+	margin-top: -69px;
+	margin-left: 88px;
+}
+
+.message-invitaion-sender-img {
+	width: 70px;
+ 	height: 55px;
+  	border-radius: 99em;
+  	position: fixed;
+  	left: auto;
+  	right: auto;
+  	margin-top: 1%;
+  	display: none;
+}
 .message-sender-img {
-	width: 80px;
-  height: 70px;
-  border-radius: 99em;
+	width: 70px;
+  	height: 55px;
+ 	border-radius: 99em;
+ 	position: fixed;
+ 	left: auto;
+ 	right: auto;
+ 	margin-top: 1%;
+ 	display: none;
 }
 .js-message-invitee-btn {
 	background-color: rgba(0, 0, 0, 0);
@@ -13,12 +62,23 @@
 .js-message-invitee-btn:hover {
 	color: blue;
 }
+.js-message-btn {
+	background-color: rgba(0, 0, 0, 0);
+	border-radius: 30px;
+}
+.js-message-btn:hover {
+	color: blue;
+}
 #messagesDiv {
 	text-align: left;
 }
+#messageInput-user {
+	background-color: rgba(0, 0, 0, 0);
+	width: 80%;
+}
 #messageInput {
-	opacity: 0.2;
-	width: 90%;
+	background-color: rgba(0, 0, 0, 0);
+	width: 80%;
 }
 .glyphicon.glyphicon-send {
 	height: 26px;

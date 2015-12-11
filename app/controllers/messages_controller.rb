@@ -14,5 +14,4 @@ before_action :authenticate_user!
 			render json: { status: 404, error: "Message not found"}
 		end
 	end
-	
 end
