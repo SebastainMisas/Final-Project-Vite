@@ -1,7 +1,9 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+.glyphicon.glyphicon-home {
+	font-size: 40px;
+}
 #collapseOne {
 	max-height: 400px;
 	overflow: scroll;
@@ -35,15 +37,19 @@
 	margin-left: 88px;
 }
 
-.message-invitaion-sender-img {
+.invitation_sender_img_header {
 	width: 70px;
  	height: 55px;
   	border-radius: 99em;
-  	position: fixed;
   	left: auto;
   	right: auto;
-  	margin-top: 1%;
-  	display: none;
+}
+.requestee_img_header {
+	width: 70px;
+ 	height: 55px;
+  	border-radius: 99em;
+  	left: auto;
+  	right: auto;
 }
 .message-sender-img {
 	width: 70px;
@@ -96,6 +102,10 @@
 	font-size: 130%
 }
 .messages_header {
+	font-size: 170%;
+	color: black;
+}
+.messages_header_top {
 	font-size: 170%;
 	color: black;
 }

@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-before_action :authenticate_user!
+	
 	def create
 		post = Post.find_by(id: params[:post_id])
 		user_id = post.user_id

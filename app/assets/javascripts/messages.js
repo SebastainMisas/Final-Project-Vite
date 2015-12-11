@@ -48,11 +48,17 @@ $(document).on("ready", function (){
 
 //button to see your messages with the invitation sender
 	$(".js-message-btn").on("click", function (event) {
+		var target = $(event.currentTarget)
+	// the code below is only to update the header for messages
+		var invitation_sender_name = target.data("invitation-sender-name")
+		var invitation_sender_img = target.data("invitation-sender-img")
+		$(".messages_header").text(invitation_sender_name)
+		$(".glyphicon-comment.messages").hide()
 	// on click of the button hide and show the accordian
 		$("#collapseOne").collapse('hide');
 		$("#collapseTwo").collapse('show');
-	// grab the current target
-		var target = $(event.currentTarget)
+		$(".invitation_sender_img_header").attr("src", invitation_sender_img)
+	
 	//add invitation sender image to messsages screen
 		
 

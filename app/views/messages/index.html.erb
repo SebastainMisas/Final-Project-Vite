@@ -32,7 +32,7 @@
 					    <div class="accordion-heading">
 					      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
 					      	<div class=" glyphicon glyphicon-envelope"></div>
-					      	<span class="messages_header">Vites</span>
+					      	<span class="messages_header_top">Vites</span>
 					      </a>
 					    </div>
 					    <div id="collapseOne" class="accordion-body collapse in">
@@ -44,7 +44,7 @@
 									<img class="senders_img messages" data-sender-id="<%=request.user.id%>" src="<%=request.post.avatar.url(:thumb)%>">
 							        <div class="js-notifications"></div>
 							        <span>You got a Vite!</span>
-							        <button data-invitation-sender-id="<%= request.user.id %>" data-requestee-id="<%=request.sender.id%>" data-requestee-img="<%=request.user.avatar.url(:thumb)%>" class="js-message-btn glyphicon glyphicon-comment"> <%= request.user.name %></button><br><br>
+							        <button data-invitation-sender-id="<%= request.user.id %>" data-requestee-id="<%=request.sender.id%>" data-invitation-sender-img="<%=request.user.avatar.url(:thumb)%>" data-invitation-sender-name="<%=request.user.name%>" class="js-message-btn glyphicon glyphicon-comment"> <%= request.user.name %></button><br><br>
 						      </div>
 						     <%end%>
 					    </div>
@@ -54,6 +54,7 @@
 					  <div class="accordion-group">
 					    <div class="accordion-heading">
 					      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+					      	<img class="invitation_sender_img_header">
 					      	<div class="glyphicon glyphicon-comment messages"></div>
 					        <span class="messages_header">Messages</span>
 					      </a>

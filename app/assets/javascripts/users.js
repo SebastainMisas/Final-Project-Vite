@@ -45,9 +45,16 @@ $(document).on("ready", function (){
 
 //button to see your messages with the invitee
 	$(".js-message-invitee-btn").on("click", function (event) {
+		var target = $(event.currentTarget)
+	// the code below is only to update the header for messages
+		var requestee_name = target.data("requestee-name")
+		var requestee_img = target.data("requestee-img")
+		$(".messages_header").text(requestee_name)
+		$(".glyphicon-comment.messages").hide()
+	// on click of the button hide and show the accordian
 		$("#collapseOne").collapse('hide');
 		$("#collapseTwo").collapse('show');
-		var target = $(event.currentTarget);
+		$(".requestee_img_header").attr("src", requestee_img)
 
 	// grab both users id's from that button
     	requestee = target.data('requestee-id');
