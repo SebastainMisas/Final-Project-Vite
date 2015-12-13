@@ -62,11 +62,13 @@
 					    <div id="collapseTwo" class="accordion-body collapse two">
 					      <div class="accordion-inner">
 			<!-- chat messages -->
-			<!-- appending messages to this div -->
-							
-							<div id="messagesDiv"></div>
+			<!-- appending messages
+			} to this div -->
+							<div id="messagesDiv"><h1>Select someone to message!</h1></div>
 			<!-- messages input  -->
-							<input type='text' id='messageInput' placeholder='Message'><button class="glyphicon glyphicon-send to_invitee"></button>
+							<div class="message_input_div">
+								<input type='text' id='messageInput' placeholder='Message'><button class="glyphicon glyphicon-send to_invitee"></button>
+							</div>
 							<span id="current_user_name" data-users-name="<%=current_user.name%>" data-current-user-id="<%=current_user.id%>"></span>
 
 					      </div>

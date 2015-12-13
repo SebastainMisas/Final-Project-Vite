@@ -1,6 +1,12 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.message_input_div {
+	margin-top: 14%;
+}
+.accordion-body {
+	min-height: 91px;
+}
 .glyphicon.glyphicon-home {
 	font-size: 40px;
 }
@@ -38,15 +44,15 @@
 }
 
 .invitation_sender_img_header {
-	width: 70px;
- 	height: 55px;
+	width: 49px;
+ 	height: 39px;
   	border-radius: 99em;
   	left: auto;
   	right: auto;
 }
 .requestee_img_header {
-	width: 70px;
- 	height: 55px;
+	width: 49px;
+ 	height: 39px;
   	border-radius: 99em;
   	left: auto;
   	right: auto;
@@ -76,18 +82,25 @@
 	color: blue;
 }
 #messagesDiv {
-	text-align: left;
+	text-align: center;
+	margin-top: 51px;
 }
 #messageInput-user {
-	background-color: rgba(0, 0, 0, 0);
-	width: 80%;
+	background-color: rgba(255, 255, 255, 1);
+	width: 90%;
 }
 #messageInput {
-	background-color: rgba(0, 0, 0, 0);
-	width: 80%;
+	background-color: rgba(255, 255, 255, 1);
+	width: 90%;
+
 }
 .glyphicon.glyphicon-send {
 	height: 26px;
+	color: black;
+	background-color: white;
+	border: none;
+	margin-left: -27px;
+	height: 0vh;
 }
 
 .glyphicon.glyphicon-remove.messages {
@@ -102,8 +115,10 @@
 	font-size: 130%
 }
 .messages_header {
-	font-size: 170%;
+	font-size: 130%;
 	color: black;
+	margin-right: auto;
+	margin-left: auto;
 }
 .messages_header_top {
 	font-size: 170%;
@@ -115,7 +130,7 @@
 }
 .glyphicon.glyphicon-comment.messages {
     top: 1vh;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 
